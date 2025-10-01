@@ -1,35 +1,26 @@
-import { User, MapPin, CreditCard, Clock, Settings } from 'lucide-react';
+import { User, MapPin, CreditCard, Clock, Settings, Package } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-
-const orderHistory = [
-  {
-    id: 1,
-    restaurant: 'Burger Palace',
-    items: 'Classic Burger x2, Fries',
-    total: 32.97,
-    date: '2025-01-10',
-    status: 'Delivered',
-  },
-  {
-    id: 2,
-    restaurant: 'Pizza Haven',
-    items: 'Margherita Pizza, Garlic Bread',
-    total: 22.98,
-    date: '2025-01-08',
-    status: 'Delivered',
-  },
-  {
-    id: 3,
-    restaurant: 'Sushi Master',
-    items: 'California Roll x3',
-    total: 38.97,
-    date: '2025-01-05',
-    status: 'Delivered',
-  },
-];
+import { useOrder } from '@/contexts/OrderContext';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
+  const { orders } = useOrder();
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'delivered':
+        return 'bg-green-500/20 text-green-700 dark:text-green-400';
+      case 'on_the_way':
+        return 'bg-blue-500/20 text-blue-700 dark:text-blue-400';
+      case 'picked_up':
+        return 'bg-purple-500/20 text-purple-700 dark:text-purple-400';
+      case 'accepted':
+        return 'bg-yellow-500/20 text-yellow-700 dark:text-yellow-400';
+      default:
+        return 'bg-gray-500/20 text-gray-700 dark:text-gray-400';
+    }
+  };
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -101,43 +92,55 @@ const Profile = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {orderHistory.map((order) => (
-                    <div
-                      key={order.id}
-                      className="p-4 rounded-xl bg-muted/50 space-y-2"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-semibold text-lg">
-                            {order.restaurant}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {order.items}
-                          </p>
+                {orders.length === 0 ? (
+                  <div className="text-center py-8">
+                    <Package className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                    <p className="text-muted-foreground">No orders yet</p>
+                    <Link to="/restaurants">
+                      <Button className="mt-4">Start Ordering</Button>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {orders.map((order) => (
+                      <div
+                        key={order.id}
+                        className="p-4 rounded-xl bg-muted/50 space-y-2"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="font-semibold text-lg">
+                              Order #{order.id}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {order.items.length} items
+                            </p>
+                          </div>
+                          <span className="text-lg font-bold text-primary">
+                            ${order.totalPrice.toFixed(2)}
+                          </span>
                         </div>
-                        <span className="text-lg font-bold text-primary">
-                          ${order.total.toFixed(2)}
-                        </span>
+                        <div className="flex justify-between items-center text-sm">
+                          <span className="text-muted-foreground">
+                            {new Date(order.createdAt).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })}
+                          </span>
+                          <span className={`px-2 py-1 rounded-full font-medium ${getStatusColor(order.status)}`}>
+                            {order.status.replace('_', ' ').toUpperCase()}
+                          </span>
+                        </div>
+                        <Link to={`/order-tracking/${order.id}`}>
+                          <Button variant="outline" className="w-full">
+                            Track Order
+                          </Button>
+                        </Link>
                       </div>
-                      <div className="flex justify-between items-center text-sm">
-                        <span className="text-muted-foreground">
-                          {new Date(order.date).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric',
-                          })}
-                        </span>
-                        <span className="px-2 py-1 rounded-full bg-green-500/20 text-green-700 dark:text-green-400 font-medium">
-                          {order.status}
-                        </span>
-                      </div>
-                      <Button variant="outline" className="w-full">
-                        Reorder
-                      </Button>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

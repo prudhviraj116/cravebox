@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import FoodItem from '@/components/FoodItem';
@@ -7,6 +7,7 @@ import restaurantsData from '@/data/restaurants.json';
 import menuData from '@/data/menu.json';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const Menu = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,6 +16,18 @@ const Menu = () => {
 
   const restaurant = restaurantsData.find((r) => r.id === Number(id));
   const menuItems = menuData[id as keyof typeof menuData] || [];
+
+  const categories = useMemo(() => {
+    const cats = ['All', ...new Set(menuItems.map(item => item.category))];
+    return cats;
+  }, [menuItems]);
+
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const filteredItems = useMemo(() => {
+    if (selectedCategory === 'All') return menuItems;
+    return menuItems.filter(item => item.category === selectedCategory);
+  }, [menuItems, selectedCategory]);
 
   if (!restaurant) {
     return (
@@ -55,9 +68,25 @@ const Menu = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        {/* Category Tabs */}
+        <div className="mb-8 overflow-x-auto pb-2">
+          <div className="flex gap-2 min-w-max">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory(category)}
+                className="whitespace-nowrap"
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+        </div>
+
         {/* Menu Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {menuItems.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <div
               key={item.id}
               className="animate-scale-in"

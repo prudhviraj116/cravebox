@@ -6,11 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCart } from '@/contexts/CartContext';
+import { useOrder } from '@/contexts/OrderContext';
 import { toast } from '@/hooks/use-toast';
+import { mockAPI } from '@/services/api';
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
+  const { addOrder } = useOrder();
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -22,14 +26,50 @@ const Checkout = () => {
     cvv: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    clearCart();
-    toast({
-      title: 'Order Placed Successfully! 🎉',
-      description: 'Your delicious food will arrive in 30-45 minutes.',
-    });
-    setTimeout(() => navigate('/'), 2000);
+    setIsSubmitting(true);
+
+    try {
+      // Create order data
+      const orderData = {
+        restaurantId: items[0]?.restaurantId || 1,
+        items: items.map(item => ({
+          id: item.id,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        deliveryAddress: {
+          street: formData.address,
+          city: formData.city,
+          zipCode: formData.zipCode,
+          phone: formData.phone,
+        },
+        totalPrice: totalPrice + 3.99,
+      };
+
+      // Replace with actual API call: orderAPI.create(orderData)
+      const order = await mockAPI.createOrder(orderData);
+      
+      addOrder(order);
+      clearCart();
+      
+      toast({
+        title: 'Order Placed Successfully! 🎉',
+        description: 'Track your order in real-time.',
+      });
+      
+      setTimeout(() => navigate(`/order-tracking/${order.id}`), 1500);
+    } catch (error) {
+      console.error('Error placing order:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to place order. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -219,9 +259,10 @@ const Checkout = () => {
                 </div>
                 <Button
                   onClick={handleSubmit}
+                  disabled={isSubmitting}
                   className="w-full gradient-primary text-lg py-6 glow-primary"
                 >
-                  Place Order
+                  {isSubmitting ? 'Placing Order...' : 'Place Order'}
                 </Button>
               </CardContent>
             </Card>

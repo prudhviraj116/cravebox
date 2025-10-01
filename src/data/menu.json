@@ -169,6 +169,14 @@
       "category": "Starters"
     },
     {
+      "id": 510,
+      "name": "Paneer Tikka",
+      "description": "Grilled cottage cheese with spices",
+      "price": 9.99,
+      "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&q=80",
+      "category": "Starters"
+    },
+    {
       "id": 501,
       "name": "Butter Chicken",
       "description": "Creamy tomato curry with tender chicken",
@@ -185,20 +193,20 @@
       "category": "Main"
     },
     {
+      "id": 511,
+      "name": "Paneer Butter Masala",
+      "description": "Cottage cheese in rich creamy gravy",
+      "price": 14.99,
+      "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80",
+      "category": "Main"
+    },
+    {
       "id": 503,
-      "name": "Biryani",
+      "name": "Chicken Biryani",
       "description": "Fragrant rice with spiced chicken",
       "price": 14.99,
       "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80",
-      "category": "Rice"
-    },
-    {
-      "id": 504,
-      "name": "Garlic Naan",
-      "description": "Fresh baked bread with garlic",
-      "price": 3.99,
-      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
-      "category": "Bread"
+      "category": "Biryani"
     },
     {
       "id": 506,
@@ -207,6 +215,70 @@
       "price": 12.99,
       "image": "https://images.unsplash.com/photo-1599118726976-1a80c3cf1fbc?w=600&q=80",
       "category": "Biryani"
+    },
+    {
+      "id": 512,
+      "name": "Mutton Biryani",
+      "description": "Tender mutton pieces with aromatic rice",
+      "price": 17.99,
+      "image": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&q=80",
+      "category": "Biryani"
+    },
+    {
+      "id": 513,
+      "name": "Samosa",
+      "description": "Crispy pastry filled with spiced potatoes",
+      "price": 3.99,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
+      "category": "Snacks"
+    },
+    {
+      "id": 514,
+      "name": "Pakora",
+      "description": "Deep fried vegetable fritters",
+      "price": 4.99,
+      "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=600&q=80",
+      "category": "Snacks"
+    },
+    {
+      "id": 515,
+      "name": "Mango Lassi",
+      "description": "Sweet mango yogurt drink",
+      "price": 3.49,
+      "image": "https://images.unsplash.com/photo-1590080872943-0c1aebc073b0?w=600&q=80",
+      "category": "Drinks"
+    },
+    {
+      "id": 516,
+      "name": "Masala Chai",
+      "description": "Spiced Indian tea",
+      "price": 2.49,
+      "image": "https://images.unsplash.com/photo-1597318112530-a4038e8b4c1f?w=600&q=80",
+      "category": "Drinks"
+    },
+    {
+      "id": 517,
+      "name": "Thali Meal",
+      "description": "Complete meal with rice, curry, bread, and dessert",
+      "price": 19.99,
+      "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&q=80",
+      "category": "Full Meals"
+    },
+    {
+      "id": 518,
+      "name": "Combo Meal",
+      "description": "Biryani with starter, drink and dessert",
+      "price": 22.99,
+      "image": "https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600&q=80",
+      "category": "Full Meals"
+    },
+    {
+      "id": 504,
+      "name": "Garlic Naan",
+      "description": "Fresh baked bread with garlic",
+      "price": 3.99,
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
+      "category": "Bread"
     }
   ],
   "6": [
