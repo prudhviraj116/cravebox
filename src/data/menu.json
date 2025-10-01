@@ -31,6 +31,22 @@
       "price": 4.99,
       "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80",
       "category": "Sides"
+    },
+    {
+      "id": 105,
+      "name": "Coca Cola",
+      "description": "Refreshing soft drink",
+      "price": 1.99,
+      "image": "https://images.unsplash.com/photo-1598514982554-dce47aa46062?w=600&q=80",
+      "category": "Drinks"
+    },
+    {
+      "id": 106,
+      "name": "Mango Lassi",
+      "description": "Sweet mango yogurt drink",
+      "price": 3.49,
+      "image": "https://images.unsplash.com/photo-1590080872943-0c1aebc073b0?w=600&q=80",
+      "category": "Drinks"
     }
   ],
   "2": [
@@ -137,6 +153,22 @@
   ],
   "5": [
     {
+      "id": 499,
+      "name": "Chicken Wings",
+      "description": "Spicy crispy chicken wings served with dip",
+      "price": 8.99,
+      "image": "https://images.unsplash.com/photo-1604917860062-3b5f12a6e77d?w=600&q=80",
+      "category": "Starters"
+    },
+    {
+      "id": 500,
+      "name": "Veg Spring Rolls",
+      "description": "Crispy rolls stuffed with vegetables",
+      "price": 5.99,
+      "image": "https://images.unsplash.com/photo-1541529086526-db283c563270?w=600&q=80",
+      "category": "Starters"
+    },
+    {
       "id": 501,
       "name": "Butter Chicken",
       "description": "Creamy tomato curry with tender chicken",
@@ -167,6 +199,14 @@
       "price": 3.99,
       "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
       "category": "Bread"
+    },
+    {
+      "id": 506,
+      "name": "Veg Biryani",
+      "description": "Fragrant rice with mixed vegetables",
+      "price": 12.99,
+      "image": "https://images.unsplash.com/photo-1599118726976-1a80c3cf1fbc?w=600&q=80",
+      "category": "Biryani"
     }
   ],
   "6": [
