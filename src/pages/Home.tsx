@@ -8,6 +8,8 @@ const categories = [
   { name: 'Burgers', icon: Beef, color: 'from-yellow-500 to-orange-500' },
   { name: 'Drinks', icon: Coffee, color: 'from-blue-500 to-purple-500' },
   { name: 'Desserts', icon: IceCream, color: 'from-pink-500 to-purple-500' },
+  { name: 'Biryanis', icon: chicken, color: 'from-red-500 to-yellow-500'},
+  { name: 'Meals' , icon: Curry, color: 'from-green-500 to-white-500'},
 ];
 
 const Home = () => {
