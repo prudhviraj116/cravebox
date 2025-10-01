@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Burger Palace",
+    "cuisine": "American",
+    "rating": 4.8,
+    "deliveryTime": "25-35 min",
+    "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80",
+    "tags": ["Burgers", "Fast Food", "American"]
+  },
+  {
+    "id": 2,
+    "name": "Pizza Haven",
+    "cuisine": "Italian",
+    "rating": 4.6,
+    "deliveryTime": "30-40 min",
+    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80",
+    "tags": ["Pizza", "Italian", "Pasta"]
+  },
+  {
+    "id": 3,
+    "name": "Sushi Master",
+    "cuisine": "Japanese",
+    "rating": 4.9,
+    "deliveryTime": "35-45 min",
+    "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&q=80",
+    "tags": ["Sushi", "Japanese", "Seafood"]
+  },
+  {
+    "id": 4,
+    "name": "Taco Fiesta",
+    "cuisine": "Mexican",
+    "rating": 4.7,
+    "deliveryTime": "20-30 min",
+    "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80",
+    "tags": ["Mexican", "Tacos", "Spicy"]
+  },
+  {
+    "id": 5,
+    "name": "Curry House",
+    "cuisine": "Indian",
+    "rating": 4.5,
+    "deliveryTime": "30-40 min",
+    "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80",
+    "tags": ["Indian", "Curry", "Spicy"]
+  },
+  {
+    "id": 6,
+    "name": "Noodle Bar",
+    "cuisine": "Asian",
+    "rating": 4.6,
+    "deliveryTime": "25-35 min",
+    "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80",
+    "tags": ["Asian", "Noodles", "Chinese"]
+  }
+]
