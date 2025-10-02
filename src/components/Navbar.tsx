@@ -1,6 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, ShoppingCart, User, Utensils } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, ShoppingCart, User, Utensils, LogOut } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 
 interface NavbarProps {
@@ -9,7 +10,9 @@ interface NavbarProps {
 
 const Navbar = ({ onMenuClick }: NavbarProps) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { totalItems } = useCart();
+  const { user, signOut } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -68,14 +71,22 @@ const Navbar = ({ onMenuClick }: NavbarProps) => {
                 )}
               </Button>
             </Link>
-            <Link to="/profile">
-              <Button
-                variant={isActive('/profile') ? 'default' : 'ghost'}
-                className={isActive('/profile') ? 'gradient-primary' : ''}
-              >
-                <User className="h-5 w-5" />
+            {user ? (
+              <>
+                <Button variant="ghost" asChild>
+                  <Link to="/profile">
+                    <User className="h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button variant="ghost" onClick={signOut}>
+                  <LogOut className="h-5 w-5" />
+                </Button>
+              </>
+            ) : (
+              <Button variant="ghost" onClick={() => navigate('/auth')}>
+                Login
               </Button>
-            </Link>
+            )}
           </div>
 
           {/* Mobile Cart Icon */}

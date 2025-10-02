@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
-import { X, Home, Store, ShoppingCart, User } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { X, Home, Store, ShoppingCart, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -10,7 +11,9 @@ interface SidebarProps {
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { totalItems } = useCart();
+  const { user, signOut } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -73,6 +76,32 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 </Link>
               );
             })}
+
+            {user ? (
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-left"
+                onClick={() => {
+                  signOut();
+                  onClose();
+                }}
+              >
+                <LogOut className="h-5 w-5 mr-3" />
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="ghost"
+                className="w-full justify-start text-left"
+                onClick={() => {
+                  navigate('/auth');
+                  onClose();
+                }}
+              >
+                <User className="h-5 w-5 mr-3" />
+                Login
+              </Button>
+            )}
           </nav>
 
           {/* Footer */}
