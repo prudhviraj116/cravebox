@@ -6,6 +6,7 @@ import { Bell, Moon, Sun } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import SEO from '@/components/SEO';
 
 const Settings = () => {
   const [notifications, setNotifications] = useState(true);
@@ -20,6 +21,12 @@ const Settings = () => {
 
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <SEO
+        title="Settings | FoodieHub"
+        description="Manage your FoodieHub notification, appearance, and account preferences."
+        path="/settings"
+        noindex
+      />
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 rounded-full gradient-primary opacity-10 blur-3xl animate-float" />
       <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full gradient-secondary opacity-10 blur-3xl animate-float" style={{ animationDelay: '1s' }} />

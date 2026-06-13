@@ -2,6 +2,9 @@ import { useState } from 'react';
 import RestaurantCard from '@/components/RestaurantCard';
 import restaurantsData from '@/data/restaurants.json';
 import { Button } from '@/components/ui/button';
+import SEO from '@/components/SEO';
+
+const SITE_URL = 'https://cravebox.lovable.app';
 
 const allTags = ['All', 'Burgers', 'Pizza', 'Sushi', 'Mexican', 'Indian', 'Asian'];
 
@@ -12,8 +15,26 @@ const Restaurants = () => {
     ? restaurantsData
     : restaurantsData.filter((r) => r.tags.includes(selectedTag));
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Local Restaurants on FoodieHub',
+    itemListElement: restaurantsData.map((r, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/menu/${r.id}`,
+      name: r.name,
+    })),
+  };
+
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+      <SEO
+        title="Local Restaurants — Browse & Order | FoodieHub"
+        description="Browse top local restaurants on FoodieHub. Compare ratings, cuisines and delivery times, then order online for fast delivery."
+        path="/restaurants"
+        jsonLd={itemListJsonLd}
+      />
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
           Restaurants Near You

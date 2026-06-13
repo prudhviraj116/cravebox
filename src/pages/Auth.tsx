@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Pizza } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -38,6 +39,12 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <SEO
+        title="Sign In or Create Account | FoodieHub"
+        description="Sign in to your FoodieHub account or create a new one to order food and track deliveries."
+        path="/auth"
+        noindex
+      />
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 rounded-full gradient-primary opacity-10 blur-3xl animate-float" />
       <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full gradient-secondary opacity-10 blur-3xl animate-float" style={{ animationDelay: '1s' }} />
@@ -47,9 +54,9 @@ const Auth = () => {
           <div className="flex justify-center mb-4">
             <Pizza className="h-12 w-12 text-primary" />
           </div>
-          <CardTitle className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-            Food Ordering
-          </CardTitle>
+          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+            Sign In to FoodieHub
+          </h1>
           <CardDescription>Sign in or create an account to continue</CardDescription>
         </CardHeader>
         <CardContent>
