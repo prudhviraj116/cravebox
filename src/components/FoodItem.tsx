@@ -46,6 +46,7 @@ const FoodItem = ({ item, restaurantId }: FoodItemProps) => {
         <Button
           size="icon"
           onClick={handleAddToCart}
+          aria-label={`Add ${item.name} to cart`}
           className="absolute top-3 right-3 gradient-accent rounded-full w-10 h-10 opacity-0 group-hover:opacity-100 smooth-transition glow-primary hover:scale-110"
         >
           <Plus className="h-5 w-5" />

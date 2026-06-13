@@ -61,6 +61,7 @@ const Cart = () => {
                       <Button
                         size="icon"
                         variant="outline"
+                        aria-label={`Decrease quantity of ${item.name}`}
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       >
                         <Minus className="h-4 w-4" />
@@ -71,6 +72,7 @@ const Cart = () => {
                       <Button
                         size="icon"
                         variant="outline"
+                        aria-label={`Increase quantity of ${item.name}`}
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       >
                         <Plus className="h-4 w-4" />
@@ -78,6 +80,7 @@ const Cart = () => {
                       <Button
                         size="icon"
                         variant="ghost"
+                        aria-label={`Remove ${item.name} from cart`}
                         className="ml-auto text-destructive hover:text-destructive"
                         onClick={() => removeFromCart(item.id)}
                       >

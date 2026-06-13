@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import FoodItem from '@/components/FoodItem';
 import CartDrawer from '@/components/CartDrawer';
+import SEO from '@/components/SEO';
 import restaurantsData from '@/data/restaurants.json';
 import menuData from '@/data/menu.json';
 import { Button } from '@/components/ui/button';
@@ -42,8 +43,28 @@ const Menu = () => {
     );
   }
 
+  const restaurantJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
+    name: restaurant.name,
+    image: restaurant.image,
+    servesCuisine: restaurant.cuisine,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: restaurant.rating,
+      reviewCount: 100,
+    },
+  };
+
   return (
     <div className="min-h-screen pb-8">
+      <SEO
+        title={`${restaurant.name} — ${restaurant.cuisine} Delivery | FoodieHub`}
+        description={`Order ${restaurant.cuisine} food from ${restaurant.name} on FoodieHub. ${restaurant.deliveryTime} delivery, rated ${restaurant.rating}/5.`}
+        path={`/menu/${restaurant.id}`}
+        image={restaurant.image}
+        jsonLd={restaurantJsonLd}
+      />
       {/* Restaurant Header */}
       <div className="relative h-64 overflow-hidden">
         <img
@@ -54,7 +75,7 @@ const Menu = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-between p-6">
           <Link to="/restaurants">
-            <Button variant="secondary" size="icon" className="rounded-full">
+            <Button variant="secondary" size="icon" className="rounded-full" aria-label="Back to restaurants">
               <ArrowLeft className="h-5 w-5" />
             </Button>
           </Link>
