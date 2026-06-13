@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CreditCard, MapPin, User, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,12 +7,14 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCart } from '@/contexts/CartContext';
 import { useOrder } from '@/contexts/OrderContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/hooks/use-toast';
 import { mockAPI } from '@/services/api';
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
   const { addOrder } = useOrder();
+  const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -21,10 +23,15 @@ const Checkout = () => {
     address: '',
     city: '',
     zipCode: '',
-    cardNumber: '',
-    expiryDate: '',
-    cvv: '',
   });
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      navigate('/auth');
+    }
+  }, [user, authLoading, navigate]);
+
+  if (!user) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
