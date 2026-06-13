@@ -1,0 +1,10 @@
+# FoodieHub
+
+> FoodieHub is a food ordering and delivery app where customers browse local restaurants, order meals, and track delivery in real time.
+
+## Pages
+
+- [Home](/): Featured restaurants, cuisines, and how FoodieHub works.
+- [Restaurants](/restaurants): Browse all partner restaurants with ratings and delivery times.
+- [Burger Palace menu](/menu/1): Example restaurant menu page (American, burgers).
+- [Pizza Haven menu](/menu/2): Example restaurant menu page (Italian, pizza).
