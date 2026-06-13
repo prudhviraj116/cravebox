@@ -188,43 +188,11 @@ const Checkout = () => {
                   <span>Payment Details</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <Label htmlFor="cardNumber">Card Number</Label>
-                  <Input
-                    id="cardNumber"
-                    name="cardNumber"
-                    placeholder="1234 5678 9012 3456"
-                    value={formData.cardNumber}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="expiryDate">Expiry Date</Label>
-                    <Input
-                      id="expiryDate"
-                      name="expiryDate"
-                      placeholder="MM/YY"
-                      value={formData.expiryDate}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="cvv">CVV</Label>
-                    <Input
-                      id="cvv"
-                      name="cvv"
-                      placeholder="123"
-                      maxLength={3}
-                      value={formData.cvv}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                </div>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Payment will be collected securely at the next step via our PCI-compliant payment
+                  provider. We never store your card number, expiry, or CVV.
+                </p>
               </CardContent>
             </Card>
           </div>
