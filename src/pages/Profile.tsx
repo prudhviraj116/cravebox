@@ -9,6 +9,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import SEO from '@/components/SEO';
 
 const Profile = () => {
   const { orders } = useOrder();
@@ -100,6 +101,12 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <SEO
+        title="My Profile | FoodieHub"
+        description="Manage your FoodieHub profile, delivery address and review your order history."
+        path="/profile"
+        noindex
+      />
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 rounded-full gradient-primary opacity-10 blur-3xl animate-float" />
       <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full gradient-secondary opacity-10 blur-3xl animate-float" style={{ animationDelay: '1s' }} />
@@ -127,6 +134,7 @@ const Profile = () => {
           {/* Profile Information */}
           <Card className="glass-effect animate-scale-in">
             <CardHeader>
+              <h2 className="sr-only">Profile Information</h2>
               <CardTitle className="flex items-center gap-2 justify-between">
                 <div className="flex items-center gap-2">
                   <UserIcon className="h-5 w-5 text-primary" />
@@ -257,6 +265,7 @@ const Profile = () => {
           {/* Order History */}
           <Card className="glass-effect animate-scale-in" style={{ animationDelay: '0.1s' }}>
             <CardHeader>
+              <h2 className="sr-only">Order History</h2>
               <CardTitle className="flex items-center gap-2">
                 <Clock className="h-5 w-5 text-primary" />
                 Order History

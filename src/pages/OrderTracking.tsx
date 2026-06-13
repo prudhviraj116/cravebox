@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { mockAPI } from '@/services/api';
 import type { Order } from '@/services/api';
+import SEO from '@/components/SEO';
 
 const OrderTracking = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -65,6 +66,12 @@ const OrderTracking = () => {
 
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <SEO
+        title={`Track Order #${order.id} | FoodieHub`}
+        description="Live tracking for your FoodieHub delivery."
+        path={`/order-tracking/${order.id}`}
+        noindex
+      />
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 rounded-full gradient-primary opacity-10 blur-3xl animate-float" />
       <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full gradient-secondary opacity-10 blur-3xl animate-float" style={{ animationDelay: '1s' }} />
@@ -77,6 +84,7 @@ const OrderTracking = () => {
         {/* Order Status Progress */}
         <Card className="glass-effect mb-8 animate-scale-in">
           <CardHeader>
+            <h2 className="sr-only">Order Status</h2>
             <CardTitle>Order #{order.id}</CardTitle>
           </CardHeader>
           <CardContent>
@@ -122,6 +130,7 @@ const OrderTracking = () => {
           {/* Map Placeholder */}
           <Card className="glass-effect animate-scale-in" style={{ animationDelay: '0.1s' }}>
             <CardHeader>
+              <h2 className="sr-only">Live Location</h2>
               <CardTitle className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
                 Live Location
@@ -163,6 +172,7 @@ const OrderTracking = () => {
           {/* Order Details */}
           <Card className="glass-effect animate-scale-in" style={{ animationDelay: '0.2s' }}>
             <CardHeader>
+              <h2 className="sr-only">Order Details</h2>
               <CardTitle className="flex items-center gap-2">
                 <Package className="h-5 w-5 text-primary" />
                 Order Details

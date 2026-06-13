@@ -10,6 +10,7 @@ import { useOrder } from '@/contexts/OrderContext';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/hooks/use-toast';
 import { mockAPI } from '@/services/api';
+import SEO from '@/components/SEO';
 
 const Checkout = () => {
   const { items, totalPrice, clearCart } = useCart();
@@ -90,6 +91,12 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <SEO
+        title="Checkout | FoodieHub"
+        description="Complete your FoodieHub order — enter delivery details and pay securely."
+        path="/checkout"
+        noindex
+      />
       {/* Floating Background Elements */}
       <div className="absolute top-20 left-10 w-64 h-64 rounded-full gradient-primary opacity-10 blur-3xl animate-float" />
       <div className="absolute bottom-20 right-10 w-64 h-64 rounded-full gradient-secondary opacity-10 blur-3xl animate-float" style={{ animationDelay: '1s' }} />
@@ -104,6 +111,7 @@ const Checkout = () => {
           <div className="lg:col-span-2 space-y-6">
             <Card className="glass-effect animate-scale-in">
               <CardHeader>
+                <h2 className="sr-only">Personal Information</h2>
                 <CardTitle className="flex items-center space-x-2">
                   <User className="h-5 w-5 text-primary" />
                   <span>Personal Information</span>
@@ -140,6 +148,7 @@ const Checkout = () => {
 
             <Card className="glass-effect animate-scale-in" style={{ animationDelay: '0.1s' }}>
               <CardHeader>
+                <h2 className="sr-only">Delivery Address</h2>
                 <CardTitle className="flex items-center space-x-2">
                   <MapPin className="h-5 w-5 text-primary" />
                   <span>Delivery Address</span>
@@ -183,6 +192,7 @@ const Checkout = () => {
 
             <Card className="glass-effect animate-scale-in" style={{ animationDelay: '0.2s' }}>
               <CardHeader>
+                <h2 className="sr-only">Payment Details</h2>
                 <CardTitle className="flex items-center space-x-2">
                   <CreditCard className="h-5 w-5 text-primary" />
                   <span>Payment Details</span>
@@ -201,6 +211,7 @@ const Checkout = () => {
           <div className="lg:col-span-1">
             <Card className="glass-effect sticky top-24 animate-scale-in" style={{ animationDelay: '0.3s' }}>
               <CardHeader>
+                <h2 className="sr-only">Order Summary</h2>
                 <CardTitle>Order Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
