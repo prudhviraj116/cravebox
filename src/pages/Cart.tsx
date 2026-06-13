@@ -3,6 +3,16 @@ import { ShoppingBag, Minus, Plus, Trash2, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useCart } from '@/contexts/CartContext';
+import SEO from '@/components/SEO';
+
+const cartSEO = (
+  <SEO
+    title="Your Cart | FoodieHub"
+    description="Review the items in your FoodieHub cart and proceed to fast, secure checkout."
+    path="/cart"
+    noindex
+  />
+);
 
 const Cart = () => {
   const { items, updateQuantity, removeFromCart, totalPrice, clearCart } = useCart();
@@ -22,12 +32,14 @@ const Cart = () => {
             <Button className="gradient-primary">Browse Restaurants</Button>
           </Link>
         </div>
+        {cartSEO}
       </div>
     );
   }
 
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+      {cartSEO}
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
