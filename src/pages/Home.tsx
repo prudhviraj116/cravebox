@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Pizza, Beef, Coffee, IceCream, ArrowRight, Drumstick, UtensilsCrossed } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SEO from '@/components/SEO';
 import heroImage from '@/assets/hero-food.jpg';
 
 const categories = [
@@ -15,6 +16,11 @@ const categories = [
 const Home = () => {
   return (
     <div className="min-h-screen">
+      <SEO
+        title="FoodieHub — Order Food Online, Delivered Fast"
+        description="Order from top local restaurants and get pizza, burgers, sushi and more delivered to your door in minutes with FoodieHub."
+        path="/"
+      />
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
