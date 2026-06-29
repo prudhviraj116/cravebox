@@ -146,6 +146,18 @@ All colors MUST be HSL.
   .gradient-hero {
     background: var(--gradient-hero);
   }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
 }
 
 @keyframes float {
