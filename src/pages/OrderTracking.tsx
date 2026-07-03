@@ -138,16 +138,8 @@ const OrderTracking = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center mb-4">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 mx-auto mb-2 text-muted-foreground animate-bounce" />
-                  <p className="text-sm text-muted-foreground">
-                    Map integration here
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Add Google Maps or Mapbox API key
-                  </p>
-                </div>
+              <div className="mb-4">
+                <FakeLiveMap />
               </div>
               
               {order.deliveryBoy && (
