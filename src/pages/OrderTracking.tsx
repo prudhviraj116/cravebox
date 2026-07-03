@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { mockAPI } from '@/services/api';
 import type { Order } from '@/services/api';
 import SEO from '@/components/SEO';
+import FakeLiveMap from '@/components/FakeLiveMap';
 
 const OrderTracking = () => {
   const { orderId } = useParams<{ orderId: string }>();
