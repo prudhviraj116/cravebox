@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { mockAPI } from '@/services/api';
 import type { Order } from '@/services/api';
 import SEO from '@/components/SEO';
+import FakeLiveMap from '@/components/FakeLiveMap';
 
 const OrderTracking = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -137,16 +138,8 @@ const OrderTracking = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center mb-4">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 mx-auto mb-2 text-muted-foreground animate-bounce" />
-                  <p className="text-sm text-muted-foreground">
-                    Map integration here
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Add Google Maps or Mapbox API key
-                  </p>
-                </div>
+              <div className="mb-4">
+                <FakeLiveMap />
               </div>
               
               {order.deliveryBoy && (
@@ -218,21 +211,6 @@ const OrderTracking = () => {
           </Card>
         </div>
 
-        {/* Integration Notes */}
-        <Card className="glass-effect mt-6 border-dashed animate-scale-in" style={{ animationDelay: '0.3s' }}>
-          <CardContent className="pt-6">
-            <h3 className="font-semibold mb-2 text-primary">🗺️ Map Integration Guide</h3>
-            <p className="text-sm text-muted-foreground mb-2">
-              To enable live tracking with Google Maps or Mapbox:
-            </p>
-            <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
-              <li>Get API key from Google Maps Platform or Mapbox</li>
-              <li>Install: <code className="bg-muted px-1 py-0.5 rounded">npm install react-map-gl mapbox-gl</code></li>
-              <li>Add map component with delivery boy's live location</li>
-              <li>Use WebSocket or polling to update location in real-time</li>
-            </ol>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
